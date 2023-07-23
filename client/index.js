@@ -25,11 +25,13 @@ async function main() {
     const merkleTree = new MerkleTree(niceList);
     const proof = merkleTree.getProof(index);
 
-    // const { data: gift } = await axios.post(`${serverUrl}/gift`, {
-    //     // TODO: add request body parameters here!
-    // });
+    // proofName != checkName => Mimicking proof forgery
+    const { data: gift } = await axios.post(`${serverUrl}/gift`, {
+        proof,
+        checkName
+    });
 
-    // console.log({ gift });
+    console.log({ gift });
 }
 
 main();
